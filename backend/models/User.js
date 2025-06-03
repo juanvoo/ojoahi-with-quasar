@@ -1,5 +1,5 @@
-const pool = require('../config/database');
-const bcrypt = require('bcryptjs');
+import pool from '../config/database.js';
+import bcrypt from 'bcrypt';
 
 class User {
   static async create({ username, email, password, role, user_type }) {
@@ -232,4 +232,4 @@ class User {
   }
 }
 
-module.exports = User;
+export default User;

@@ -1,4 +1,5 @@
 import express from 'express';
+import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/auth.js';
@@ -11,6 +12,12 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
+app.use(session({
+  secret: 'tu_secreto_super_secreto', // cambia esto por algo seguro en producción
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Usa true SOLO si tienes https
+}));
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 

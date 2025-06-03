@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const authController = require('../controllers/authController');
-const { isNotAuthenticated } = require('../middleware/auth');
+import authController from '../controllers/authController.js';
+import { isNotAuthenticated } from '../middleware/auth.js';
 
 // Las vistas de login/registro ahora son responsabilidad del frontend (Quasar)
 
@@ -14,4 +14,4 @@ router.post('/login', isNotAuthenticated, authController.login);
 // Logout de usuario (API)
 router.get('/logout', authController.logout);
 
-module.exports = router;
+export default router;

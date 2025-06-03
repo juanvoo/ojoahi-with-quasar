@@ -10,7 +10,7 @@
       </q-card-section>
       <q-separator />
       <q-card-section>
-        <q-form @submit.prevent="onSubmit" class="q-gutter-md">
+        <q-form @submit.prevent="login" class="q-gutter-md">
           <q-input
             filled
             v-model="email"
@@ -77,26 +77,43 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
+import { useQuasar } from 'quasar'
 
 const router = useRouter()
+const $q = useQuasar()
+
 const email = ref('')
 const password = ref('')
 const remember = ref(false)
 
-function onSubmit() {
-  // Aquí va la lógica real de login
-  if (!email.value || !password.value) return
-  // Simulación
-  router.push('/users/dashboard')
+async function login() {
+  try {
+    const response = await axios.post('/api/auth/login', {
+      email: email.value,
+      password: password.value
+    })
+    if (response.data.success) {
+      const role = response.data.user.role
+      // Redirección según rol
+      if (role === 'blind') {
+        router.push('/blind-dashboard')
+      } else if (role === 'volunteer') {
+        router.push('/volunteer-dashboard')
+      } else {
+        $q.notify({ color: 'negative', message: 'Rol desconocido. Contacta soporte.' })
+      }
+    } else {
+      $q.notify({ color: 'negative', message: response.data.message })
+    }
+  } catch (err) {
+    console.error(err)
+    $q.notify({ color: 'negative', message: 'Error de conexión o credenciales incorrectas.' })
+  }
 }
 </script>
 
 <style scoped>
-/* .login-green-bg {
-  min-height: 100vh;
-  background: #5dd62c;
-  flex-direction: column;
-} */
 .login-card {
   max-width: 400px;
   width: 100%;

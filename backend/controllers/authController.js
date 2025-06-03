@@ -1,7 +1,8 @@
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
+import User from '../models/User.js';
+import bcrypt from 'bcrypt';
 
-exports.login = async (req, res) => {
+// LOGIN
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -44,7 +45,8 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.register = async (req, res) => {
+// REGISTER
+export const register = async (req, res) => {
   try {
     const { username, email, password, role } = req.body;
     console.log('Datos recibidos:', req.body);
@@ -77,7 +79,8 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.logout = (req, res) => {
+// LOGOUT
+export const logout = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       console.error('Error al cerrar sesión:', err);
@@ -86,3 +89,6 @@ exports.logout = (req, res) => {
     res.json({ success: true, message: 'Sesión cerrada correctamente' });
   });
 };
+
+// EXPORTAR TODOS LOS CONTROLADORES JUNTOS
+export default { login, register, logout };
