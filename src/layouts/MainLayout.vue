@@ -1,102 +1,60 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout>
     <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
+      <AppHeader />
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
+    <q-page-container class="column flex flex-center">
       <router-view />
     </q-page-container>
+
+    <q-footer>
+      <BaseFooter />
+    </q-footer>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { onMounted } from 'vue'
+import { useQuasar } from 'quasar'
+import AppHeader from 'components/AppHeader.vue'
+import BaseFooter from 'components/BaseFooter.vue'
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+let accessibilityManager
+
+// const toggleVoice = () => accessibilityManager?.toggleVoiceAssistant()
+// const toggleReader = () => digitalReader?.startObjectDetection()
+// const zoomIn = () => accessibilityManager?.zoomIn()
+// const zoomOut = () => accessibilityManager?.zoomOut()
+// const readPage = () => accessibilityManager?.readCurrentPage()
+
+const $q = useQuasar()
+
+onMounted(() => {
+  
+  if (window.AccessibilityManager) {
+    accessibilityManager = new window.AccessibilityManager()
+    // digitalReader = new window.DigitalReader(accessibilityManager)
+
+    setTimeout(() => {
+      accessibilityManager.speak(
+        'Bienvenido a OjoAhí. Presione Alt + A para activar el asistente de voz, ' +
+        'Alt + L para leer la página, Alt + más para aumentar el zoom, ' +
+        'y Alt + menos para reducir el zoom.'
+      )
+    }, 1000)
   }
-]
 
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
-}
+  
+  if (window.success_msg) {
+    $q.notify({ type: 'positive', message: window.success_msg, caption: 'Éxito' })
+  }
+  if (window.error_msg) {
+    $q.notify({ type: 'negative', message: window.error_msg, caption: 'Error' })
+  }
+})
 </script>
+
+<style>
+/* ...tus estilos aquí, igual que antes... */
+</style>
