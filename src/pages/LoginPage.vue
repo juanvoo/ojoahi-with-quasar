@@ -89,9 +89,12 @@ const remember = ref(false)
 
 async function login() {
   try {
-    const response = await axios.post('/api/auth/login', {
+    const response = await axios.post('http://localhost:3000/api/auth/login', {
       email: email.value,
-      password: password.value
+      password: password.value,
+      remember: remember.value
+    }, {
+      withCredentials: true
     })
     if (response.data.success) {
       const role = response.data.user.role
@@ -104,7 +107,7 @@ async function login() {
         $q.notify({ color: 'negative', message: 'Rol desconocido. Contacta soporte.' })
       }
     } else {
-      $q.notify({ color: 'negative', message: response.data.message })
+      $q.notify({ color: 'negative', message: response.data.message || 'Error de autenticación.' })
     }
   } catch (err) {
     console.error(err)
