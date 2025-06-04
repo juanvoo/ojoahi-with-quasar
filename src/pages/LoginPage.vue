@@ -79,6 +79,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 import { useQuasar } from 'quasar'
+import { useUserStore } from 'stores/user'
 
 const router = useRouter()
 const $q = useQuasar()
@@ -87,18 +88,19 @@ const email = ref('')
 const password = ref('')
 const remember = ref(false)
 
+const userStore = useUserStore()
+
+
 async function login() {
   try {
     const response = await axios.post('http://localhost:3000/api/auth/login', {
       email: email.value,
-      password: password.value,
-      remember: remember.value
-    }, {
-      withCredentials: true
-    })
+      password: password.value
+    }, { withCredentials: true })
+
     if (response.data.success) {
+      userStore.setUser(response.data.user)
       const role = response.data.user.role
-      // Redirección según rol
       if (role === 'blind') {
         router.push('/blind-dashboard')
       } else if (role === 'volunteer') {
@@ -109,13 +111,12 @@ async function login() {
     } else {
       $q.notify({ color: 'negative', message: response.data.message || 'Error de autenticación.' })
     }
-  } catch (err) {
-    console.error(err)
-    $q.notify({ color: 'negative', message: 'Error de conexión o credenciales incorrectas.' })
+  } catch {
+    $q.notify({ color: 'negative', message: 'Error de conexión o credenciales inválidas' })
   }
 }
-</script>
 
+</script>
 <style scoped>
 .login-card {
   max-width: 400px;

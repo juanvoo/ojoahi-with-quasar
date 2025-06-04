@@ -86,14 +86,25 @@ export const register = async (req, res) => {
 };
 
 // LOGOUT
+// export const logout = (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       console.error('Error al cerrar sesión:', err);
+//       return res.status(500).json({ success: false, message: 'Error al cerrar sesión' });
+//     }
+//     res.json({ success: true, message: 'Sesión cerrada correctamente' });
+//   });
+// };
 export const logout = (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      console.error('Error al cerrar sesión:', err);
-      return res.status(500).json({ success: false, message: 'Error al cerrar sesión' });
-    }
-    res.json({ success: true, message: 'Sesión cerrada correctamente' });
-  });
+  res.clearCookie('connect.sid'); // Cambia si tu cookie tiene otro nombre
+  if (req.session) {
+    req.session.destroy(err => {
+      // Opcional: manejar error
+      res.json({ success: true });
+    });
+  } else {
+    res.json({ success: true });
+  }
 };
 
 // EXPORTAR TODOS LOS CONTROLADORES JUNTOS

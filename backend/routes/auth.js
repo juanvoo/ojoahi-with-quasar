@@ -12,6 +12,12 @@ router.post('/register', isNotAuthenticated, authController.register);
 router.post('/login', isNotAuthenticated, authController.login);
 
 // Logout de usuario (API)
-router.get('/logout', authController.logout);
+// router.get('/logout', authController.logout);
+
+router.post('/logout', (req, res) => {
+  res.clearCookie('nombre_de_tu_cookie_de_sesion'); // Cambia por el nombre real
+  req.session?.destroy?.(); // Solo si usas sesiones
+  res.json({ success: true });
+});
 
 export default router;
