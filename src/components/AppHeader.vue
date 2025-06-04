@@ -13,7 +13,7 @@
 
       <!-- Menú grande (desktop) -->
       <div class="row items-center q-gutter-sm q-hidden-xs">
-        <template v-if="user">
+        <template v-if="userStore.user">
           <q-btn flat dense no-caps to="/users/dashboard" label="Dashboard" class="text-white"/>
           <q-btn flat dense no-caps to="/chat" class="text-white">
             <q-icon name="fas fa-comments" />
@@ -21,7 +21,14 @@
             <q-badge v-if="unreadMessages" color="negative" floating>{{ unreadMessages }}</q-badge>
           </q-btn>
           <q-btn flat dense no-caps to="/users/new-profile" label="Perfil" class="text-white"/>
-          <q-btn flat dense no-caps to="/logout" label="Cerrar Sesión" class="text-white"/>
+          <q-btn
+            flat dense no-caps
+            color="negative"
+            icon="logout"
+            label="Cerrar sesión"
+            @click="logout"
+            class="text-white"
+          />
         </template>
         <template v-else>
           <q-btn flat dense no-caps to="/" label="Inicio" class="text-white" :class="{'text-bold': isActive('home')}"/>
@@ -60,7 +67,7 @@
       content-class="q-pa-md"
     >
       <q-list>
-        <template v-if="user">
+        <template v-if="userStore.user">
           <q-item clickable v-ripple to="/users/dashboard" @click="drawer = false">
             <q-item-section avatar><q-icon name="dashboard" /></q-item-section>
             <q-item-section>Dashboard</q-item-section>
@@ -76,7 +83,7 @@
             <q-item-section avatar><q-icon name="person" /></q-item-section>
             <q-item-section>Perfil</q-item-section>
           </q-item>
-          <q-item clickable v-ripple to="/logout" @click="drawer = false">
+          <q-item clickable v-ripple @click="logoutMobile">
             <q-item-section avatar><q-icon name="logout" /></q-item-section>
             <q-item-section>Cerrar Sesión</q-item-section>
           </q-item>
@@ -117,12 +124,52 @@
 </template>
 
 <script setup>
-import { ref} from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useQuasar } from 'quasar'
+import { useRoute, useRouter } from 'vue-router'
+import { useUserStore } from 'src/stores/user'
 
-// Simulación de usuario (reemplaza por tu lógica real o pinia/store)
-const user = ref(null) // Cambia a un objeto para simular autenticado
-const unreadMessages = ref(0) // Cambia a un número >0 para simular mensajes nuevos
+// Store global del usuario
+const userStore = useUserStore()
+const unreadMessages = ref(0)
+const $q = useQuasar()
+const router = useRouter()
+
+// Carga usuario al montar
+onMounted(async () => {
+  try {
+    const res = await fetch('http://localhost:3000/api/auth/user', { credentials: 'include' })
+    if (res.ok) {
+      userStore.setUser(await res.json())
+    } else {
+      userStore.clearUser()
+    }
+  } catch {
+    userStore.clearUser()
+  }
+})
+
+// Logout para desktop
+async function logout() {
+  try {
+    const res = await fetch('http://localhost:3000/api/auth/logout', { credentials: 'include' })
+    if (res.ok) {
+      userStore.clearUser()
+      $q.notify({ color: 'positive', message: 'Sesión cerrada correctamente' })
+      router.push('/login')
+    } else {
+      $q.notify({ color: 'negative', message: 'No se pudo cerrar sesión' })
+    }
+  } catch {
+    $q.notify({ color: 'negative', message: 'Error al cerrar sesión' })
+  }
+}
+
+// Logout en el drawer mobile (cierra drawer también)
+async function logoutMobile() {
+  await logout()
+  drawer.value = false
+}
 
 // Estado del drawer
 const drawer = ref(false)
@@ -130,7 +177,6 @@ const drawer = ref(false)
 // Para estilos activos
 const route = useRoute()
 const isActive = (name) => {
-  // Ajusta según tus rutas reales
   if (name === 'home') return route.path === '/'
   if (name === 'about') return route.hash === '#nosotros'
   if (name === 'services') return route.hash === '#servicios'

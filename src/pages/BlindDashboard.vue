@@ -30,43 +30,53 @@
           />
         </q-btn>
       </div>
+
       <!-- Notificaciones -->
-<q-icon :name="notifIcon(notif.type)" color="primary" />
+      <div v-if="showNotifications" class="notifications-panel">
+        <h3>Notificaciones</h3>
+        <div v-for="notif in notifications" :key="notif.id" class="notification-item">
+          <q-icon :name="notifIcon(notif.type)" color="primary" />
+          <span>{{ notif.title }}</span>
+          <small class="notification-time">{{ formatDate(notif.created_at) }}</small>
+          <q-btn
+            v-if="notif.unread"
+            size="sm"
+            flat
+            icon="check"
+            aria-label="Marcar como leída"
+            class="mark-read"
+            @click="markAsRead(notif.id)"
+          />
+        </div>
+        <q-btn
+          v-if="notifications.length"
+          size="sm"
+          color="primary"
+          flat
+          @click="markAllAsRead"
+          aria-label="Marcar todas como leídas"
+          label="Marcar todas como leídas"
+        />
+      </div>
 
-<!-- Fechas -->
-<small class="notification-time">{{ formatDate(notif.created_at) }}</small>
-
-<!-- Botón marcar como leído -->
-<q-btn
-  v-if="notif.unread"
-  size="sm"
-  flat
-  icon="check"
-  aria-label="Marcar como leída"
-  class="mark-read"
-  @click="markAsRead(notif.id)"
-/>
-
-<!-- Botón marcar todas como leídas -->
-<q-btn
-  v-if="notifications.length"
-  size="sm"
-  color="primary"
-  flat
-  @click="markAllAsRead"
-  aria-label="Marcar todas como leídas"
-  label="Marcar todas como leídas"
-/>
-
-<!-- Botón cancelar reserva -->
-<q-btn
-  v-if="r.status === 'pending'"
-  color="negative"
-  class="cancel-btn q-mt-sm"
-  label="Cancelar"
-  :aria-label="`Cancelar reserva con ${r.volunteer_name}`"
-  @click="cancelReservation(r.id)"
-/>
+      <!-- Reservas -->
+      <div class="reservations-panel">
+        <h3>Reservas Pendientes</h3>
+        <div v-for="r in reservations" :key="r.id" class="reservation-item">
+          <div>
+            <b>{{ r.volunteer_name }}</b> — {{ r.description }}
+            <span>({{ formatDate(r.date) }} a las {{ r.time }})</span>
+          </div>
+          <q-btn
+            v-if="r.status === 'pending'"
+            color="negative"
+            class="cancel-btn q-mt-sm"
+            label="Cancelar"
+            :aria-label="`Cancelar reserva con ${r.volunteer_name}`"
+            @click="cancelReservation(r.id)"
+          />
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -79,7 +89,7 @@ import { io } from 'socket.io-client';
 
 const user = ref(null);
 const isOnline = ref(false);
-let socket = null; // Usar let para poder asignar después
+let socket = null;
 
 const notifications = ref([]);
 const unreadMessages = ref(0);
@@ -91,12 +101,10 @@ const $q = useQuasar();
 const router = useRouter();
 
 onMounted(async () => {
-  // 1. Carga usuario autenticado desde backend
   const res = await fetch('http://localhost:3000/api/auth/user', { credentials: 'include' });
   if (res.ok) {
     user.value = await res.json();
   } else {
-    // Demo/datos simulados en caso de no autenticado
     user.value = { id: 'demo', username: 'Juan Ciego' };
     notifications.value = [
       { id: '1', type: 'assistance', title: 'Ayuda aceptada', message: 'Un voluntario aceptó tu solicitud.', created_at: new Date(), unread: true },
@@ -112,7 +120,6 @@ onMounted(async () => {
   }
 });
 
-// 2. Conecta el socket SOLO cuando tengas el usuario real
 watch(user, (val) => {
   if (val && val.id && !socket) {
     socket = io('http://localhost:3000', { withCredentials: true });
@@ -130,8 +137,6 @@ watch(user, (val) => {
     });
   }
 });
-
-// ... el resto de tu lógica igual (notificaciones, reservas, etc.) ...
 
 function notifIcon(type) {
   switch (type) {

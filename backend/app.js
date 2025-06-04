@@ -54,11 +54,13 @@ io.on('connection', (socket) => {
     io.emit('user-status', { userId, status: 'online' });
   });
   socket.on('disconnect', () => {
+    console.log('Socket.IO: Cliente desconectado');
     if (socket.data && socket.data.userId) {
       io.emit('user-status', { userId: socket.data.userId, status: 'offline' });
     }
   });
 });
+
 
 // ¡IMPORTANTE! Escucha con httpServer, no app.listen
 const PORT = 3000;

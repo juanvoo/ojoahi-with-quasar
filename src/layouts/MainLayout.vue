@@ -19,6 +19,8 @@ import { onMounted } from 'vue'
 import { useQuasar } from 'quasar'
 import AppHeader from 'components/AppHeader.vue'
 import BaseFooter from 'components/BaseFooter.vue'
+import { useUserStore } from 'src/stores/user'
+
 
 let accessibilityManager
 
@@ -52,6 +54,22 @@ onMounted(() => {
   if (window.error_msg) {
     $q.notify({ type: 'negative', message: window.error_msg, caption: 'Error' })
   }
+})
+
+const userStore = useUserStore()
+
+onMounted(async () => {
+  try {
+    const res = await fetch('http://localhost:3000/api/auth/user', { credentials: 'include' })
+    if (res.ok) {
+      userStore.setUser(await res.json())
+    } else {
+      userStore.clearUser()
+    }
+  } catch (err) {
+  console.error(err)
+  userStore.clearUser()
+}
 })
 </script>
 

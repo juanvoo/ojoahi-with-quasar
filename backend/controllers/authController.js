@@ -5,25 +5,31 @@ import bcrypt from 'bcrypt';
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-
-    // Validación básica
     if (!email || !password) {
       return res.status(400).json({ success: false, message: 'Por favor, ingresa email y contraseña' });
     }
 
-    // Buscar usuario por email
     const user = await User.findByEmail(email);
+    console.log('User encontrado:', user);
+
     if (!user) {
       return res.status(401).json({ success: false, message: 'Email o contraseña incorrectos' });
     }
 
-    // Verificar contraseña
-    const isMatch = await bcrypt.compare(password, user.password);
+    // Verifica si la contraseña está hasheada con bcrypt
+    let isMatch = false;
+    if (user.password.startsWith('$2')) {
+      isMatch = await bcrypt.compare(password, user.password);
+    } else {
+      console.warn('Contraseña sin hash, comparando texto plano (NO recomendado)');
+      isMatch = (password === user.password);
+    }
+    console.log('¿Coincide la contraseña?', isMatch);
+
     if (!isMatch) {
       return res.status(401).json({ success: false, message: 'Email o contraseña incorrectos' });
     }
 
-    // Guardar usuario en sesión (o generar token JWT)
     req.session.user = {
       id: user.id,
       username: user.username,
@@ -34,10 +40,10 @@ export const login = async (req, res) => {
 
     console.log(`Usuario ${user.username} (ID: ${user.id}) ha iniciado sesión. Rol: ${user.role}`);
 
-    return res.json({ 
-      success: true, 
-      message: 'Has iniciado sesión exitosamente', 
-      user: req.session.user 
+    return res.json({
+      success: true,
+      message: 'Has iniciado sesión exitosamente',
+      user: req.session.user
     });
   } catch (error) {
     console.error('Error en el login:', error);
