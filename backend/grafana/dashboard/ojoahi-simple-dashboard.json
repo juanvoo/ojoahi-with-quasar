@@ -1,0 +1,97 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "OjoAhi - Dashboard Principal",
+    "tags": ["ojoahi"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Total de Usuarios",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) as value FROM users",
+            "format": "table",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [{ "color": "green", "value": null }]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 }
+      },
+      {
+        "id": 2,
+        "title": "Solicitudes de Ayuda",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) as value FROM help_requests",
+            "format": "table",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [{ "color": "blue", "value": null }]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 }
+      },
+      {
+        "id": 3,
+        "title": "Mensajes Enviados",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) as value FROM messages",
+            "format": "table",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [{ "color": "purple", "value": null }]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 }
+      },
+      {
+        "id": 4,
+        "title": "Usuarios por Tipo",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "SELECT user_type as metric, COUNT(*) as value FROM users GROUP BY user_type",
+            "format": "table",
+            "refId": "A"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 6, "x": 18, "y": 0 }
+      }
+    ],
+    "time": {
+      "from": "now-30d",
+      "to": "now"
+    },
+    "refresh": "5s"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "OjoAhi - Dashboard Principal",
+    "tags": ["ojoahi"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Usuarios Totales",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) FROM users",
+            "datasource": "OjoAhi-MySQL"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 }
+      },
+      {
+        "id": 2,
+        "title": "Solicitudes de Ayuda",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) FROM help_requests",
+            "datasource": "OjoAhi-MySQL"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 }
+      },
+      {
+        "id": 3,
+        "title": "Mensajes Enviados",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) FROM messages",
+            "datasource": "OjoAhi-MySQL"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 }
+      },
+      {
+        "id": 4,
+        "title": "Conversaciones Activas",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) FROM conversations",
+            "datasource": "OjoAhi-MySQL"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 6, "x": 18, "y": 0 }
+      }
+    ],
+    "time": { "from": "now-6h", "to": "now" },
+    "refresh": "10s"
+  }
+}

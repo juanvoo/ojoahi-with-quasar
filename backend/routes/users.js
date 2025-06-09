@@ -1,56 +1,139 @@
-const express = require('express');
-const router = express.Router();
-const path = require('path');
-const fs = require('fs');
-const multer = require('multer');
-const { isAuthenticated } = require('../middleware/auth');
+import express from "express"
+import { isAuthenticated } from "../middleware/auth.js"
+import { validate, userSchemas } from "../utils/validation.js"
+import { asyncHandler } from "../middleware/errorHandler.js"
+import User from "../models/User.js"
+import logger from "../utils/logger.js"
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = path.join(__dirname, '../public/uploads/profiles');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
+const router = express.Router()
+
+// Get current user profile
+router.get(
+  "/profile",
+  isAuthenticated,
+  asyncHandler(async (req, res) => {
+    try {
+      const user = await User.findById(req.session.user.id)
+
+      if (!user) {
+        return res.status(404).json({
+          success: false,
+          message: "Usuario no encontrado",
+        })
+      }
+
+      res.json({
+        success: true,
+        user,
+      })
+    } catch (error) {
+      logger.error("Error al obtener perfil:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error interno del servidor",
+      })
     }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    const userId = req.session.user.id;
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, `${userId}_${uniqueSuffix}${path.extname(file.originalname)}`);
-  }
-});
-const upload = multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } });
+  }),
+)
 
-// Controladores
-const userController = require('../controllers/userController');
+// Update user profile
+router.put(
+  "/profile",
+  isAuthenticated,
+  validate(userSchemas.updateProfile),
+  asyncHandler(async (req, res) => {
+    try {
+      const updatedUser = await User.updateProfile(req.session.user.id, req.body)
 
-// Obtener perfil del usuario autenticado
-router.get('/profile', isAuthenticated, userController.getProfile);
+      // Update session data
+      req.session.user = {
+        ...req.session.user,
+        username: updatedUser.username,
+        email: updatedUser.email,
+      }
 
-// Editar perfil (GET: obtiene datos, POST: actualiza)
-router.get('/profile/edit', isAuthenticated, userController.getEditProfile);
-router.post('/profile/edit', isAuthenticated, userController.postEditProfile);
+      res.json({
+        success: true,
+        message: "Perfil actualizado correctamente",
+        user: updatedUser,
+      })
+    } catch (error) {
+      logger.error("Error al actualizar perfil:", error)
+      res.status(400).json({
+        success: false,
+        message: error.message || "Error al actualizar perfil",
+      })
+    }
+  }),
+)
 
-// Cambiar contraseña
-router.get('/profile/change-password', isAuthenticated, userController.getChangePassword);
-router.post('/profile/change-password', isAuthenticated, userController.postChangePassword);
+// Change password
+router.post(
+  "/change-password",
+  isAuthenticated,
+  validate(userSchemas.changePassword),
+  asyncHandler(async (req, res) => {
+    try {
+      const { current_password, new_password } = req.body
 
-// Dashboard (devolver datos para dashboard según rol)
-router.get('/dashboard', isAuthenticated, userController.getDashboardData);
+      await User.changePassword(req.session.user.id, current_password, new_password)
 
-// Subida de imagen de perfil y edición de campos (nuevo sistema)
-router.post('/profile/upload', isAuthenticated, upload.single('profile_image'), userController.uploadProfileImage);
+      res.json({
+        success: true,
+        message: "Contraseña cambiada correctamente",
+      })
+    } catch (error) {
+      logger.error("Error al cambiar contraseña:", error)
+      res.status(400).json({
+        success: false,
+        message: error.message || "Error al cambiar contraseña",
+      })
+    }
+  }),
+)
 
-// Refrescar datos de sesión
-router.get('/profile/refresh', isAuthenticated, userController.refreshSession);
+// Get user statistics
+router.get(
+  "/stats",
+  isAuthenticated,
+  asyncHandler(async (req, res) => {
+    try {
+      const stats = await User.getStats(req.session.user.id)
 
-// Listar voluntarios disponibles (solo para usuarios ciegos)
-router.get('/volunteers', isAuthenticated, userController.getVolunteers);
+      res.json({
+        success: true,
+        stats,
+      })
+    } catch (error) {
+      logger.error("Error al obtener estadísticas:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error al obtener estadísticas",
+      })
+    }
+  }),
+)
 
-// Ver perfil de voluntario específico
-router.get('/volunteers/:id', isAuthenticated, userController.getVolunteerProfile);
+// Get all volunteers (for blind users)
+router.get(
+  "/volunteers",
+  isAuthenticated,
+  asyncHandler(async (req, res) => {
+    try {
+      const volunteers = await User.getVolunteers()
 
-// Ver perfil público de un voluntario (para todos)
-router.get('/profile/:id', isAuthenticated, userController.getPublicProfile);
+      res.json({
+        success: true,
+        volunteers,
+      })
+    } catch (error) {
+      logger.error("Error al obtener voluntarios:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error al obtener voluntarios",
+      })
+    }
+  }),
+)
 
-module.exports = router;
+export default router

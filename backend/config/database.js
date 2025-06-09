@@ -1,29 +1,52 @@
-import mysql from 'mysql2/promise';
-import dotenv from 'dotenv';
-dotenv.config();
+import mysql from "mysql2/promise"
+import dotenv from "dotenv"
+import logger from "../utils/logger.js"
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'ojoahi_db',
+dotenv.config()
+
+const config = {
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_NAME || "ojoahi_db",
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
-});
+  queueLimit: 0,
+  acquireTimeout: 60000,
+  timeout: 60000,
+  reconnect: true,
+  charset: "utf8mb4",
+}
 
+const pool = mysql.createPool(config)
+
+// Test database connection
 async function checkDatabaseConnection() {
   try {
-    const connection = await pool.getConnection();
-    console.log('Conexión a la base de datos establecida correctamente.');
-    connection.release();
+    const connection = await pool.getConnection()
+    logger.info("✅ Conexión a la base de datos establecida correctamente")
+    connection.release()
   } catch (error) {
-    console.error('Error al conectar a la base de datos:', error);
-    throw error;
+    logger.error("❌ Error al conectar a la base de datos:", error)
+    throw error
   }
 }
 
-// Verificar la conexión al iniciar la aplicación
-checkDatabaseConnection();
+// Initialize database connection check
+checkDatabaseConnection()
 
-export default pool;
+// Handle pool errors
+pool.on("connection", (connection) => {
+  logger.info(`Nueva conexión establecida como id ${connection.threadId}`)
+})
+
+pool.on("error", (err) => {
+  logger.error("Error en el pool de conexiones:", err)
+  if (err.code === "PROTOCOL_CONNECTION_LOST") {
+    checkDatabaseConnection()
+  } else {
+    throw err
+  }
+})
+
+export default pool

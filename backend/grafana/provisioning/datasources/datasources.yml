@@ -1,0 +1,12 @@
+apiVersion: 1
+
+datasources:
+  - name: OjoAhi-MySQL
+    type: mysql
+    access: proxy
+    url: host.docker.internal:3306
+    database: ojoahi
+    user: root
+    secureJsonData:
+      password: losBrunos3  # Cambia esto por tu contraseña real
+    isDefault: true

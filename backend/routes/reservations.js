@@ -1,67 +1,75 @@
-const express = require('express');
-const router = express.Router();
-const Reservation = require('../models/Reservation');
-const { isAuthenticated } = require('../middleware/auth');
+import express from "express"
+import { isAuthenticated } from "../middleware/auth.js"
+import { asyncHandler } from "../middleware/errorHandler.js"
+import pool from "../config/database.js"
+import logger from "../utils/logger.js"
 
-// Crear una reserva
-router.post('/create', isAuthenticated, async (req, res) => {
-  try {
-    const { volunteerId, date, time, description } = req.body;
-    const userId = req.session.user.id;
-    await Reservation.create(userId, volunteerId, date, time, description);
-    res.json({ success: true, message: 'Reserva creada exitosamente' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Error al crear la reserva' });
-  }
-});
+const router = express.Router()
 
-// Cancelar una reserva
-router.post('/cancel/:id', isAuthenticated, async (req, res) => {
-  try {
-    const reservationId = req.params.id;
-    const reservation = await Reservation.findById(reservationId);
-    if (reservation.user_id !== req.session.user.id) {
-      return res.status(403).json({ success: false, message: 'No tienes permiso para cancelar esta reserva' });
+// Get user reservations
+router.get(
+  "/",
+  isAuthenticated,
+  asyncHandler(async (req, res) => {
+    try {
+      const userId = req.session.user.id
+      const userRole = req.session.user.role
+
+      let query
+      let params
+
+      if (userRole === "volunteer") {
+        query = `
+        SELECT 
+          r.*,
+          hr.title,
+          hr.description,
+          hr.date,
+          hr.time,
+          hr.location,
+          u.username as blind_user_name,
+          u.name as blind_user_full_name
+        FROM reservations r
+        JOIN help_requests hr ON r.help_request_id = hr.id
+        JOIN users u ON r.blind_user_id = u.id
+        WHERE r.volunteer_id = ?
+        ORDER BY r.created_at DESC
+      `
+        params = [userId]
+      } else {
+        query = `
+        SELECT 
+          r.*,
+          hr.title,
+          hr.description,
+          hr.date,
+          hr.time,
+          hr.location,
+          u.username as volunteer_name,
+          u.name as volunteer_full_name
+        FROM reservations r
+        JOIN help_requests hr ON r.help_request_id = hr.id
+        JOIN users u ON r.volunteer_id = u.id
+        WHERE r.blind_user_id = ?
+        ORDER BY r.created_at DESC
+      `
+        params = [userId]
+      }
+
+      const [reservations] = await pool.execute(query, params)
+
+      res.json({
+        success: true,
+        reservations,
+      })
+    } catch (error) {
+      logger.error("Error al obtener reservas:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error al obtener reservas",
+      })
     }
-    await Reservation.updateStatus(reservationId, 'cancelled');
-    res.json({ success: true, message: 'Reserva cancelada exitosamente' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Error al cancelar la reserva' });
-  }
-});
+  }),
+)
 
-// Aceptar una solicitud de reserva
-router.post('/accept/:id', isAuthenticated, async (req, res) => {
-  try {
-    const reservationId = req.params.id;
-    const reservation = await Reservation.findById(reservationId);
-    if (reservation.volunteer_id !== req.session.user.id) {
-      return res.status(403).json({ success: false, message: 'No tienes permiso para aceptar esta reserva' });
-    }
-    await Reservation.updateStatus(reservationId, 'confirmed');
-    res.json({ success: true, message: 'Reserva aceptada exitosamente' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Error al aceptar la reserva' });
-  }
-});
-
-// Rechazar una solicitud de reserva
-router.post('/reject/:id', isAuthenticated, async (req, res) => {
-  try {
-    const reservationId = req.params.id;
-    const reservation = await Reservation.findById(reservationId);
-    if (reservation.volunteer_id !== req.session.user.id) {
-      return res.status(403).json({ success: false, message: 'No tienes permiso para rechazar esta reserva' });
-    }
-    await Reservation.updateStatus(reservationId, 'rejected');
-    res.json({ success: true, message: 'Reserva rechazada exitosamente' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Error al rechazar la reserva' });
-  }
-});
-
-module.exports = router;
+export default router

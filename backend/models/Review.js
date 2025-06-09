@@ -1,5 +1,4 @@
-const pool = require('../config/database');
-
+import pool from '../config/database.js';
 class Review {
   static async create(userId, volunteerId, reservationId, rating, comment) {
     try {
@@ -83,4 +82,4 @@ class Review {
   }
 }
 
-module.exports = Review;
+export default Review;

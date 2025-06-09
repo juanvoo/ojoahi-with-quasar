@@ -1,69 +1,176 @@
-import express from 'express';
-import session from 'express-session';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import authRoutes from './routes/auth.js';
-import { Server } from "socket.io";
-import { createServer } from 'http';
-import cors from 'cors';
+import express from "express"
+import session from "express-session"
+import { createServer } from "http"
+import { Server } from "socket.io"
+import cors from "cors"
+import helmet from "helmet"
+import compression from "compression"
+import dotenv from "dotenv"
 
-// Para __dirname y __filename en ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Import utilities and middleware
+import logger from "./utils/logger.js"
+import { errorHandler, notFound } from "./middleware/errorHandler.js"
+import { validateEnv } from "./utils/validateEnv.js"
 
-const app = express();
+// Import routes
+import authRoutes from "./routes/auth.js"
+import userRoutes from "./routes/users.js"
+import chatRoutes from "./routes/chat.js"
+import helpRequestRoutes from "./routes/helpRequests.js"
+import reservationRoutes from "./routes/reservations.js"
+import reviewRoutes from "./routes/reviews.js"
+import supportRoutes from "./routes/support.js"
+import notificationRoutes from "./routes/notifications.js"
 
-// Middlewares
-app.use(express.json());
-app.use(session({
-  secret: 'tu_secreto_super_secreto', // cambia esto por algo seguro en producción
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // Usa true SOLO si tienes https
-}));
-app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static(path.join(__dirname, 'public')));
-app.use(cors({ origin: 'http://localhost:9000', credentials: true }));
+// Load environment variables
+dotenv.config()
 
-// Rutas
-app.use('/api/auth', authRoutes);
+// Validate environment variables
+validateEnv()
 
-// Endpoint autenticado para obtener el usuario actual
-app.get('/api/auth/user', (req, res) => {
-  if (req.session && req.session.user) {
-    res.json(req.session.user);
+const app = express()
+const httpServer = createServer(app)
+
+// Security middleware - DESACTIVADO en desarrollo
+if (process.env.NODE_ENV === "production") {
+  app.use(helmet())
+}
+
+app.use(compression())
+
+// CORS configuration
+app.use(
+  cors({
+    origin: process.env.NODE_ENV === "production" ? process.env.FRONTEND_URL || "http://localhost:9000" : true,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+  }),
+)
+
+// Body parsing middleware
+app.use(express.json({ limit: "10mb" }))
+app.use(express.urlencoded({ extended: true, limit: "10mb" }))
+
+// Session configuration
+const sessionSecret = process.env.SESSION_SECRET || "desarrollo-secret-key-no-segura"
+
+app.use(
+  session({
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    name: "ojoahi.sid",
+    cookie: {
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+    },
+    rolling: true,
+  }),
+)
+
+// Static files
+app.use("/public", express.static("public"))
+
+// API Routes
+app.use("/api/auth", authRoutes)
+app.use("/api/users", userRoutes)
+app.use("/api/chat", chatRoutes)
+app.use("/api/help-requests", helpRequestRoutes)
+app.use("/api/reservations", reservationRoutes)
+app.use("/api/reviews", reviewRoutes)
+app.use("/api/support", supportRoutes)
+app.use("/api/notifications", notificationRoutes)
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.json({
+    status: "ok",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV,
+  })
+})
+
+// Current user endpoint
+app.get("/api/auth/user", (req, res) => {
+  if (req.session?.user) {
+    res.json({
+      success: true,
+      user: {
+        id: req.session.user.id,
+        username: req.session.user.username,
+        email: req.session.user.email,
+        role: req.session.user.role,
+      },
+    })
   } else {
-    res.status(401).json({ message: 'No autenticado' });
+    res.status(401).json({
+      success: false,
+      message: "No autenticado",
+    })
   }
-});
+})
 
-// Servidor y socket.io
-const httpServer = createServer(app);
+// Error handling middleware
+app.use(notFound)
+app.use(errorHandler)
+
+// Socket.IO configuration
 const io = new Server(httpServer, {
   cors: {
-    origin: 'http://localhost:9000', // Usa el puerto de tu frontend Quasar
+    origin: process.env.NODE_ENV === "production" ? process.env.FRONTEND_URL || "http://localhost:9000" : true,
     credentials: true,
-  }
-});
+  },
+})
 
-// WebSocket: Estado online/offline
-io.on('connection', (socket) => {
-  console.log('Socket.IO: Cliente conectado');
-  socket.on('user-online', (userId) => {
-    socket.data.userId = userId;
-    io.emit('user-status', { userId, status: 'online' });
-  });
-  socket.on('disconnect', () => {
-    console.log('Socket.IO: Cliente desconectado');
-    if (socket.data && socket.data.userId) {
-      io.emit('user-status', { userId: socket.data.userId, status: 'offline' });
+// Socket.IO connection handling
+io.on("connection", (socket) => {
+  logger.info(`Socket.IO: Client connected - ${socket.id}`)
+
+  socket.on("user-online", (userId) => {
+    socket.data.userId = userId
+    socket.join(`user-${userId}`)
+    io.emit("user-status", { userId, status: "online" })
+    logger.info(`User ${userId} connected`)
+  })
+
+  socket.on("join-chat", (chatId) => {
+    socket.join(`chat-${chatId}`)
+    logger.info(`User joined chat ${chatId}`)
+  })
+
+  socket.on("disconnect", () => {
+    logger.info(`Socket.IO: Client disconnected - ${socket.id}`)
+    if (socket.data?.userId) {
+      io.emit("user-status", {
+        userId: socket.data.userId,
+        status: "offline",
+      })
     }
-  });
-});
+  })
+})
 
+// Make io available to routes
+app.set("io", io)
 
-// ¡IMPORTANTE! Escucha con httpServer, no app.listen
-const PORT = 3000;
+// Start server
+const PORT = process.env.PORT || 8000 // Cambiado de 3000 a 8000
 httpServer.listen(PORT, () => {
-  console.log(`Servidor backend escuchando en puerto ${PORT}`);
-});
+  logger.info(`🚀 OjoAhi server started on port ${PORT}`)
+  logger.info(`📱 Frontend URL: ${process.env.FRONTEND_URL || "http://localhost:9000"}`)
+  logger.info(`🔒 Mode: ${process.env.NODE_ENV || "development"}`)
+})
+
+// Graceful shutdown
+process.on("SIGTERM", () => {
+  logger.info("SIGTERM received. Closing server...")
+  httpServer.close(() => {
+    logger.info("Server closed successfully")
+    process.exit(0)
+  })
+})
+
+export default app

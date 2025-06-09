@@ -1,12 +1,13 @@
-const User = require('../models/User');
-const Reservation = require('../models/Reservation');
-const Review = require('../models/Review');
-const HelpRequest = require('../models/HelpRequest');
-const path = require('path');
-const fs = require('fs');
+import User from '../models/User.js';
+import Reservation from '../models/Reservation.js';
+import Review from '../models/Review.js';
+import HelpRequest from '../models/HelpRequest.js';
+import path from 'path';
+import fs from "fs";
+import router from '../routes/auth.js';
 
 // Dashboard del usuario (ciego o voluntario)
-exports.getDashboard = async (req, res) => {
+export const getDashboard = async (req, res) => {
   try {
     if (!req.session.user) {
       return res.status(401).json({ success: false, message: 'Por favor inicia sesión para acceder' });
@@ -56,7 +57,7 @@ exports.getDashboard = async (req, res) => {
 };
 
 // Obtener el perfil del usuario
-exports.getProfile = async (req, res) => {
+export const getProfile = async (req, res) => {
   try {
     const userId = req.session.user.id;
     const forceRefresh = req.query.refresh === 'true';
@@ -99,7 +100,7 @@ exports.getProfile = async (req, res) => {
 };
 
 // Obtener formulario de edición de perfil
-exports.getEditProfile = async (req, res) => {
+export const getEditProfile = async (req, res) => {
   try {
     const userId = req.session.user.id;
 
@@ -121,7 +122,7 @@ exports.getEditProfile = async (req, res) => {
 };
 
 // Editar perfil del usuario
-exports.postEditProfile = async (req, res) => {
+export const postEditProfile = async (req, res) => {
   try {
     const userId = req.session.user.id;
     const { username, name, email, phone, address, bio, availability } = req.body;
@@ -251,12 +252,12 @@ exports.postEditProfile = async (req, res) => {
 };
 
 // Obtener formulario de cambio de contraseña
-exports.getChangePassword = (req, res) => {
+export const getChangePassword = (req, res) => {
   return res.json({ success: true, title: 'Cambiar Contraseña' });
 };
 
 // Cambiar la contraseña del usuario
-exports.postChangePassword = async (req, res) => {
+export const postChangePassword = async (req, res) => {
   try {
     const userId = req.session.user.id;
     const { current_password, new_password, confirm_password } = req.body;
@@ -280,3 +281,5 @@ exports.postChangePassword = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message || 'Error al cambiar la contraseña' });
   }
 };
+
+export default router;

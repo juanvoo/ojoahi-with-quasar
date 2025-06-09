@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+import pool from '../config/database.js';
 
 class HelpRequest {
   static async create({ user_id, volunteer_id, description, date, time }) {
@@ -100,4 +100,4 @@ class HelpRequest {
   }
 }
 
-module.exports = HelpRequest;
+export default HelpRequest;

@@ -1,17 +1,35 @@
-const express = require("express")
+import express from "express"
+import { isAuthenticated } from "../middleware/auth.js"
+import { asyncHandler } from "../middleware/errorHandler.js"
+import logger from "../utils/logger.js"
+
 const router = express.Router()
-const { isAuthenticated } = require("../middleware/auth")
-const supportChatController = require("../controllers/supportChatController")
 
-// API principal de ayuda (debe devolver JSON o puedes eliminarla si la ayuda va en el frontend)
-router.get("/help", supportChatController.getHelp)
+// Submit support ticket
+router.post(
+  "/ticket",
+  isAuthenticated,
+  asyncHandler(async (req, res) => {
+    try {
+      const { subject, message, priority } = req.body
+      const userId = req.session.user.id
 
-// Chat de soporte (requiere autenticación)
-// Todas estas rutas deben devolver JSON y ser consumidas por el frontend Quasar
-router.get("/", isAuthenticated, supportChatController.getIndex)
-router.get("/chat/:id", isAuthenticated, supportChatController.getSession)
-router.post("/create", isAuthenticated, supportChatController.createSession)
-router.post("/send", isAuthenticated, supportChatController.sendMessage)
-router.get("/close/:id", isAuthenticated, supportChatController.closeSession)
+      // Here you would typically save to a support tickets table
+      // For now, we'll just log it
+      logger.info(`Support ticket from user ${userId}: ${subject}`)
 
-module.exports = router
+      res.json({
+        success: true,
+        message: "Ticket de soporte enviado correctamente",
+      })
+    } catch (error) {
+      logger.error("Error al enviar ticket de soporte:", error)
+      res.status(500).json({
+        success: false,
+        message: "Error al enviar ticket de soporte",
+      })
+    }
+  }),
+)
+
+export default router

@@ -1,111 +1,153 @@
-import User from '../models/User.js';
-import bcrypt from 'bcrypt';
+import User from "../models/User.js"
+import bcrypt from "bcrypt"
+import logger from "../utils/logger.js"
+import { asyncHandler } from "../middleware/errorHandler.js"
 
 // LOGIN
-export const login = async (req, res) => {
+export const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body
+
+  logger.info(`🔐 Login attempt for: ${email}`)
+
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ success: false, message: 'Por favor, ingresa email y contraseña' });
-    }
-
-    const user = await User.findByEmail(email);
-    console.log('User encontrado:', user);
-
+    // Buscar usuario
+    const user = await User.findByEmail(email)
     if (!user) {
-      return res.status(401).json({ success: false, message: 'Email o contraseña incorrectos' });
+      logger.warn(`❌ User not found: ${email}`)
+      return res.status(401).json({
+        success: false,
+        message: "Credenciales incorrectas",
+      })
     }
 
-    // Verifica si la contraseña está hasheada con bcrypt
-    let isMatch = false;
-    if (user.password.startsWith('$2')) {
-      isMatch = await bcrypt.compare(password, user.password);
+    // Verificar contraseña
+    let isMatch = false
+
+    if (user.password.startsWith("$2")) {
+      isMatch = await bcrypt.compare(password, user.password)
     } else {
-      console.warn('Contraseña sin hash, comparando texto plano (NO recomendado)');
-      isMatch = (password === user.password);
+      isMatch = password === user.password
+      // Migrar contraseña si es texto plano
+      if (isMatch) {
+        await User.migratePassword(user.id, password)
+      }
     }
-    console.log('¿Coincide la contraseña?', isMatch);
 
     if (!isMatch) {
-      return res.status(401).json({ success: false, message: 'Email o contraseña incorrectos' });
+      logger.warn(`❌ Invalid password for user: ${user.username}`)
+      return res.status(401).json({
+        success: false,
+        message: "Credenciales incorrectas",
+      })
     }
 
+    // Crear sesión
     req.session.user = {
       id: user.id,
       username: user.username,
       email: user.email,
       role: user.role,
-      is_admin: user.is_admin
-    };
+      is_admin: user.is_admin || false,
+    }
 
-    console.log(`Usuario ${user.username} (ID: ${user.id}) ha iniciado sesión. Rol: ${user.role}`);
+    // Forzar guardado de sesión
+    req.session.save((err) => {
+      if (err) {
+        logger.error(`❌ Error saving session: ${err.message}`)
+        return res.status(500).json({
+          success: false,
+          message: "Error interno del servidor",
+        })
+      }
 
-    return res.json({
-      success: true,
-      message: 'Has iniciado sesión exitosamente',
-      user: req.session.user
-    });
+      logger.info(`✅ Login successful for: ${user.username}`)
+
+      res.json({
+        success: true,
+        message: "Inicio de sesión exitoso",
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role,
+        },
+      })
+    })
   } catch (error) {
-    console.error('Error en el login:', error);
-    return res.status(500).json({ success: false, message: 'Error en el inicio de sesión' });
+    logger.error(`❌ Login error: ${error.message}`)
+
+    res.status(500).json({
+      success: false,
+      message: "Error interno del servidor",
+    })
   }
-};
+})
 
 // REGISTER
-export const register = async (req, res) => {
-  try {
-    const { username, email, password, role } = req.body;
-    console.log('Datos recibidos:', req.body);
+export const register = asyncHandler(async (req, res) => {
+  const { username, email, password, role } = req.body
 
-    // Validación básica
-    if (!username || !email || !password || !role) {
-      return res.status(400).json({ success: false, message: 'Por favor, rellena todos los campos' });
-    }
+  logger.info(`📝 Registration attempt for: ${email}`)
 
-    // Verificar si el usuario ya existe
-    const existingUser = await User.findByEmail(email);
-    if (existingUser) {
-      return res.status(409).json({ success: false, message: 'El email ya está registrado' });
-    }
-
-    // Crear nuevo usuario
-    const userId = await User.create({ 
-      username, 
-      email, 
-      password, 
-      role,
-      user_type: role // Asegurarse de que user_type y role sean iguales
-    });
-    console.log('Usuario creado con ID:', userId);
-
-    return res.json({ success: true, message: 'Te has registrado exitosamente' });
-  } catch (error) {
-    console.error('Error en el registro:', error);
-    return res.status(500).json({ success: false, message: 'Error en el registro' });
+  // Check if user already exists
+  const existingUser = await User.findByEmail(email)
+  if (existingUser) {
+    logger.warn(`❌ Email already registered: ${email}`)
+    return res.status(409).json({
+      success: false,
+      message: "El email ya está registrado",
+    })
   }
-};
+
+  // Create new user
+  const userId = await User.create({
+    username,
+    email,
+    password,
+    role,
+    user_type: role,
+  })
+
+  logger.info(`✅ User registered: ${username} (ID: ${userId})`)
+
+  res.status(201).json({
+    success: true,
+    message: "Usuario registrado exitosamente",
+    userId,
+  })
+})
 
 // LOGOUT
-// export const logout = (req, res) => {
-//   req.session.destroy((err) => {
-//     if (err) {
-//       console.error('Error al cerrar sesión:', err);
-//       return res.status(500).json({ success: false, message: 'Error al cerrar sesión' });
-//     }
-//     res.json({ success: true, message: 'Sesión cerrada correctamente' });
-//   });
-// };
-export const logout = (req, res) => {
-  res.clearCookie('connect.sid'); // Cambia si tu cookie tiene otro nombre
-  if (req.session) {
-    req.session.destroy(err => {
-      // Opcional: manejar error
-      res.json({ success: true });
-    });
-  } else {
-    res.json({ success: true });
-  }
-};
+export const logout = asyncHandler(async (req, res) => {
+  const username = req.session?.user?.username
 
-// EXPORTAR TODOS LOS CONTROLADORES JUNTOS
-export default { login, register, logout };
+  logger.info(`👋 Logout for: ${username || "unknown user"}`)
+
+  // Destroy session
+  req.session.destroy((err) => {
+    if (err) {
+      logger.error("❌ Error destroying session:", err)
+      return res.status(500).json({
+        success: false,
+        message: "Error al cerrar sesión",
+      })
+    }
+
+    // Clear cookie
+    res.clearCookie("ojoahi.sid", {
+      path: "/",
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+    })
+
+    logger.info(`✅ Session closed for: ${username || "unknown user"}`)
+
+    res.json({
+      success: true,
+      message: "Sesión cerrada correctamente",
+    })
+  })
+})
+
+export default { login, register, logout }
