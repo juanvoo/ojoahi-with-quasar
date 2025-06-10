@@ -148,28 +148,22 @@ export const useAuthStore = defineStore("auth", {
         this.loading = true
         console.log("Updating profile with data:", profileData)
 
-        // En un entorno real, esto sería una llamada a la API
-        // const response = await api.put("/users/profile", profileData)
+        const response = await api.put("/users/profile", profileData)
 
-        // Simulamos una respuesta exitosa
-        await new Promise((resolve) => setTimeout(resolve, 800))
+        if (response.data.success) {
+          // Actualizar el usuario en el estado con los datos del servidor
+          this.user = {
+            ...this.user,
+            ...response.data.user,
+          }
 
-        // Actualizamos el usuario en el estado
-        this.user = {
-          ...this.user,
-          ...profileData,
-          // Aseguramos que estos campos no se pierdan
-          id: this.user.id,
-          role: this.user.role,
-          is_admin: this.user.is_admin,
+          Notify.create({
+            type: "positive",
+            message: "Perfil actualizado correctamente",
+          })
+
+          return true
         }
-
-        Notify.create({
-          type: "positive",
-          message: "Perfil actualizado correctamente",
-        })
-
-        return true
       } catch (error) {
         console.error("Error updating profile:", error)
 
@@ -188,18 +182,16 @@ export const useAuthStore = defineStore("auth", {
       try {
         this.loading = true
 
-        // En un entorno real, esto sería una llamada a la API
-        // const response = await api.post("/users/change-password", passwordData)
+        const response = await api.post("/users/change-password", passwordData)
 
-        // Simulamos una respuesta exitosa
-        await new Promise((resolve) => setTimeout(resolve, 800))
+        if (response.data.success) {
+          Notify.create({
+            type: "positive",
+            message: "Contraseña cambiada correctamente",
+          })
 
-        Notify.create({
-          type: "positive",
-          message: "Contraseña cambiada correctamente",
-        })
-
-        return true
+          return true
+        }
       } catch (error) {
         console.error("Error changing password:", error)
 

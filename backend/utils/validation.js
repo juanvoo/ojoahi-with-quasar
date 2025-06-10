@@ -41,13 +41,14 @@ export const userSchemas = {
     address: Joi.string().max(255).optional().allow(""),
     bio: Joi.string().max(500).optional().allow(""),
     availability: Joi.string().max(255).optional().allow(""),
+    profile_image: Joi.string().uri().optional().allow(""),
   }),
 
   changePassword: Joi.object({
-    currentPassword: Joi.string().required().messages({
+    current_password: Joi.string().required().messages({
       "any.required": "La contraseña actual es requerida",
     }),
-    newPassword: Joi.string().min(6).required().messages({
+    new_password: Joi.string().min(6).required().messages({
       "string.min": "La nueva contraseña debe tener al menos 6 caracteres",
       "any.required": "La nueva contraseña es requerida",
     }),

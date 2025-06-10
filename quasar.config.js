@@ -14,8 +14,8 @@ module.exports = configure((ctx) => ({
   build: {
     vueRouterMode: "history",
     env: {
-      API_URL: ctx.dev ? "http://localhost:3000/api" : "https://api.ojoahi.com/api",
-      SOCKET_URL: ctx.dev ? "http://localhost:3000" : "https://api.ojoahi.com",
+      API_URL: ctx.dev ? "http://localhost:8000/api" : "https://api.ojoahi.com/api",
+      SOCKET_URL: ctx.dev ? "http://localhost:8000" : "https://api.ojoahi.com",
     },
   },
 

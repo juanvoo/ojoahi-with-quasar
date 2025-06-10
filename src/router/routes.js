@@ -131,8 +131,19 @@ const routes = [
     ],
   },
 
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: "/users",
+    name: "AdminUsers",
+    component: () => import("src/pages/admin/UsersManagementPage.vue"),
+    meta: { requiresAuth: true, role: "admin" },
+  },
+  {
+    path: "/requests",
+    name: "AdminRequests",
+    component: () => import("src/pages/admin/RequestsMonitoringPage.vue"),
+    meta: { requiresAuth: true, role: "admin" },
+  },
+  
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),
