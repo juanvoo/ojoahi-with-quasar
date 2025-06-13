@@ -37,6 +37,10 @@ module.exports = configure((ctx) => ({
     },
 
     plugins: ["Notify", "Dialog", "Loading", "LocalStorage", "SessionStorage"],
+    components: [
+    'QInnerLoading',
+    'QSpinnerDots'
+  ]
   },
 
   animations: "all",

@@ -106,6 +106,11 @@ const routes = [
         name: "volunteer-detail",
         component: () => import("pages/blind/VolunteerDetailPage.vue"),
       },
+      {
+        path: "reviews",
+        name: "blind-reviews",
+        component: () => import("pages/blind/ReviewsPage.vue"),
+      },
     ],
   },
   {
@@ -125,25 +130,49 @@ const routes = [
       },
       {
         path: "reviews",
-        name: "reviews",
+        name: "volunteer-reviews",
         component: () => import("pages/volunteer/ReviewsPage.vue"),
       },
     ],
   },
+  {
+    path: "/app/admin",
+    component: () => import("layouts/DashboardLayout.vue"),
+    meta: { requiresAuth: true, requiresAdmin: true },
+    children: [
+      {
+        path: "",
+        name: "admin-dashboard",
+        component: () => import("pages/admin/AdminDashboardPage.vue"),
+      },
+      {
+        path: "users",
+        name: "admin-users",
+        component: () => import("pages/admin/UsersManagementPage.vue"),
+      },
+      {
+        path: "requests",
+        name: "admin-requests",
+        component: () => import("pages/admin/RequestsMonitoringPage.vue"),
+      },
+      {
+        path: "reports",
+        name: "admin-reports",
+        component: () => import("pages/admin/ReportsPage.vue"),
+      },
+      {
+        path: "analytics",
+        name: "admin-analytics",
+        component: () => import("pages/admin/AnalyticsPage.vue"),
+      },
+      {
+        path: "monitoring",
+        name: "admin-monitoring",
+        component: () => import("pages/admin/MonitoringPage.vue"),
+      },
+    ],
+  },
 
-  {
-    path: "/users",
-    name: "AdminUsers",
-    component: () => import("src/pages/admin/UsersManagementPage.vue"),
-    meta: { requiresAuth: true, role: "admin" },
-  },
-  {
-    path: "/requests",
-    name: "AdminRequests",
-    component: () => import("src/pages/admin/RequestsMonitoringPage.vue"),
-    meta: { requiresAuth: true, role: "admin" },
-  },
-  
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),

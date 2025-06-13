@@ -21,6 +21,7 @@ import reservationRoutes from "./routes/reservations.js"
 import reviewRoutes from "./routes/reviews.js"
 import supportRoutes from "./routes/support.js"
 import notificationRoutes from "./routes/notifications.js"
+import adminRoutes from "./routes/admin.js"
 
 // Load environment variables
 dotenv.config()
@@ -83,6 +84,7 @@ app.use("/api/reservations", reservationRoutes)
 app.use("/api/reviews", reviewRoutes)
 app.use("/api/support", supportRoutes)
 app.use("/api/notifications", notificationRoutes)
+app.use("/api/admin", adminRoutes)
 
 // Health check endpoint
 app.get("/health", (req, res) => {
@@ -104,6 +106,7 @@ app.get("/api/auth/user", (req, res) => {
         username: req.session.user.username,
         email: req.session.user.email,
         role: req.session.user.role,
+        is_admin: req.session.user.is_admin,
       },
     })
   } else {

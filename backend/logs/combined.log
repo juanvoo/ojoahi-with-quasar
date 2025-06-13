@@ -2662,3 +2662,320 @@
 {"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-10 16:39:31"}
 {"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-10 16:39:31"}
 {"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-10 16:39:31"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"Nueva conexión establecida como id 8","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 08:51:13"}
+{"level":"info","message":"🔐 Login attempt for: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"🔍 Buscando usuario por email: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"👤 Usuario encontrado: admin (ID: 20)","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"✅ Login successful for: admin","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"Socket.IO: Client connected - N8JOTEfKB8t-J8f4AAAB","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:15"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16"}
+{"cookie":{"expires":"2025-06-12T11:52:15.065Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16"}
+{"cookie":{"expires":"2025-06-12T11:52:16.652Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:16"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:17"}
+{"cookie":{"expires":"2025-06-12T11:52:16.696Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:17","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:17"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:17"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 08:52:17"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28"}
+{"cookie":{"expires":"2025-06-12T11:52:17.596Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28"}
+{"cookie":{"expires":"2025-06-12T12:02:28.088Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:29"}
+{"cookie":{"expires":"2025-06-12T12:02:28.103Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:29","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:29"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:29"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:29"}
+{"level":"info","message":"Socket.IO: Client disconnected - N8JOTEfKB8t-J8f4AAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:33"}
+{"level":"info","message":"Socket.IO: Client connected - 6OxNaqQh2afcfamvAAAD","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36"}
+{"cookie":{"expires":"2025-06-12T12:02:36.284Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36"}
+{"cookie":{"expires":"2025-06-12T12:02:36.596Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:36"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:37"}
+{"cookie":{"expires":"2025-06-12T12:02:36.631Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:37","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:37"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:37"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:37"}
+{"level":"info","message":"Socket.IO: Client disconnected - 6OxNaqQh2afcfamvAAAD","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:42"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"Nueva conexión establecida como id 9","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:02:52"}
+{"level":"info","message":"🔐 Login attempt for: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:38"}
+{"level":"info","message":"🔍 Buscando usuario por email: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:38"}
+{"level":"info","message":"👤 Usuario encontrado: admin (ID: 20)","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:38"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:38"}
+{"level":"info","message":"✅ Login successful for: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:39"}
+{"level":"info","message":"Socket.IO: Client connected - 0TojX1qwLsPyYE9zAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:39"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40"}
+{"cookie":{"expires":"2025-06-12T12:03:38.846Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40"}
+{"cookie":{"expires":"2025-06-12T12:03:40.261Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:40"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:41"}
+{"cookie":{"expires":"2025-06-12T12:03:40.277Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:41","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:41"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:41"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:03:41"}
+{"level":"info","message":"Socket.IO: Client disconnected - 0TojX1qwLsPyYE9zAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:11"}
+{"level":"info","message":"Socket.IO: Client connected - 6Ypu0Iht_grJyuTSAAAD","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:12"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13"}
+{"cookie":{"expires":"2025-06-12T12:08:12.838Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13"}
+{"cookie":{"expires":"2025-06-12T12:08:13.051Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:13"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:14"}
+{"cookie":{"expires":"2025-06-12T12:08:13.077Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:14","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:14"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:14"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:14"}
+{"level":"info","message":"Socket.IO: Client disconnected - 6Ypu0Iht_grJyuTSAAAD","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:15"}
+{"level":"info","message":"Socket.IO: Client connected - bXX_veeslxmZlNWwAAAF","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16"}
+{"cookie":{"expires":"2025-06-12T12:08:16.249Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16"}
+{"cookie":{"expires":"2025-06-12T12:08:16.448Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:16"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:17"}
+{"cookie":{"expires":"2025-06-12T12:08:16.508Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:17","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:17"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:17"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:08:17"}
+{"level":"info","message":"Socket.IO: Client disconnected - bXX_veeslxmZlNWwAAAF","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"level":"info","message":"Socket.IO: Client connected - z-nZzCYqwLueeW1rAAAH","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"cookie":{"expires":"2025-06-12T12:14:28.689Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"cookie":{"expires":"2025-06-12T12:14:28.824Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:29"}
+{"cookie":{"expires":"2025-06-12T12:14:28.838Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:29","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:29"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:29"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:14:29"}
+{"level":"info","message":"Socket.IO: Client disconnected - z-nZzCYqwLueeW1rAAAH","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:18"}
+{"level":"info","message":"Socket.IO: Client connected - x_sTYD0pUu8tRytXAAAJ","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:21"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22"}
+{"cookie":{"expires":"2025-06-12T12:20:21.908Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Immediate._onImmediate (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express-session\\index.js:514:7)\n    at process.processImmediate (node:internal/timers:493:21)","timestamp":"2025-06-11 09:20:22"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22"}
+{"cookie":{"expires":"2025-06-12T12:20:22.301Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:22"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:23"}
+{"cookie":{"expires":"2025-06-12T12:20:22.316Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:23","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:23"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:23"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:20:23"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11"}
+{"cookie":{"expires":"2025-06-12T12:20:23.291Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Immediate._onImmediate (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express-session\\index.js:514:7)\n    at process.processImmediate (node:internal/timers:493:21)","timestamp":"2025-06-11 09:24:11"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11"}
+{"cookie":{"expires":"2025-06-12T12:24:11.581Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:11"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:12"}
+{"cookie":{"expires":"2025-06-12T12:24:11.643Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:12","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:12"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:12"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:24:12"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08"}
+{"cookie":{"expires":"2025-06-12T12:24:12.554Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Immediate._onImmediate (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express-session\\index.js:514:7)\n    at process.processImmediate (node:internal/timers:493:21)","timestamp":"2025-06-11 09:25:08"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08"}
+{"cookie":{"expires":"2025-06-12T12:25:08.640Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:08"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:09"}
+{"cookie":{"expires":"2025-06-12T12:25:08.682Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:09","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:09"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:09"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:09"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12"}
+{"cookie":{"expires":"2025-06-12T12:25:09.628Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Immediate._onImmediate (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express-session\\index.js:514:7)\n    at process.processImmediate (node:internal/timers:493:21)","timestamp":"2025-06-11 09:25:12"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12"}
+{"cookie":{"expires":"2025-06-12T12:25:12.690Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:12"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:14"}
+{"cookie":{"expires":"2025-06-12T12:25:12.769Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:14","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:14"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:14"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:25:14"}
+{"level":"info","message":"Socket.IO: Client disconnected - x_sTYD0pUu8tRytXAAAJ","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:36"}
+{"level":"info","message":"Socket.IO: Client connected - WcJWe2-Omy1ioYJNAAAL","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49"}
+{"cookie":{"expires":"2025-06-12T12:29:49.430Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Immediate._onImmediate (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express-session\\index.js:514:7)\n    at process.processImmediate (node:internal/timers:493:21)","timestamp":"2025-06-11 09:29:49"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49"}
+{"cookie":{"expires":"2025-06-12T12:29:49.640Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:49"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:51"}
+{"cookie":{"expires":"2025-06-12T12:29:49.652Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:51","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:51"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:51"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:29:51"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"Nueva conexión establecida como id 10","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:36"}
+{"level":"info","message":"Socket.IO: Client connected - xUDhBWLyj9rbA0ejAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:31:37"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"Nueva conexión establecida como id 11","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"Socket.IO: Client connected - PQy5sYd_w00wA2FhAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:34:56"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"Nueva conexión establecida como id 12","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"Socket.IO: Client connected - xpX5fXxoymZDne9UAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:35:45"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"Nueva conexión establecida como id 13","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:01"}
+{"level":"info","message":"🔐 Login attempt for: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:21"}
+{"level":"info","message":"🔍 Buscando usuario por email: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:21"}
+{"level":"info","message":"👤 Usuario encontrado: admin (ID: 20)","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:21"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:21"}
+{"level":"info","message":"✅ Login successful for: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:21"}
+{"level":"info","message":"Socket.IO: Client connected - NfrCuss752lxuS2dAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22"}
+{"cookie":{"expires":"2025-06-12T12:39:21.056Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22"}
+{"cookie":{"expires":"2025-06-12T12:39:22.512Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:22"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:23"}
+{"cookie":{"expires":"2025-06-12T12:39:22.615Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:23","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:23"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:23"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:39:23"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"Nueva conexión establecida como id 14","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:33"}
+{"level":"info","message":"Socket.IO: Client connected - VM7l3bakse3m8CXIAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:37"}
+{"level":"info","message":"Socket.IO: Client disconnected - VM7l3bakse3m8CXIAAAB","service":"ojoahi-backend","timestamp":"2025-06-11 09:44:39"}
+{"level":"info","message":"🔐 Login attempt for: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:01"}
+{"level":"info","message":"🔍 Buscando usuario por email: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:01"}
+{"level":"info","message":"👤 Usuario encontrado: admin (ID: 20)","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:01"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:01"}
+{"level":"info","message":"✅ Login successful for: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02"}
+{"level":"info","message":"Socket.IO: Client connected - j2TUWRDJl-9qnrCZAAAD","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02"}
+{"cookie":{"expires":"2025-06-12T12:45:01.763Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:02"}
+{"cookie":{"expires":"2025-06-12T12:45:02.937Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03"}
+{"cookie":{"expires":"2025-06-12T12:45:03.049Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-11 09:45:03"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"Nueva conexión establecida como id 8","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-11 13:39:45"}
+{"level":"info","message":"✅ Validación de variables de entorno completada","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"🚀 OjoAhi server started on port 8000","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"📱 Frontend URL: http://localhost:9000","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"🔒 Mode: development","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"Nueva conexión establecida como id 32","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"✅ Conexión a la base de datos establecida correctamente","service":"ojoahi-backend","timestamp":"2025-06-13 09:59:44"}
+{"level":"info","message":"🔐 Login attempt for: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:26"}
+{"level":"info","message":"🔍 Buscando usuario por email: admin@example.com","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:26"}
+{"level":"info","message":"👤 Usuario encontrado: admin (ID: 20)","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:26"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:26"}
+{"level":"info","message":"✅ Login successful for: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:27"}
+{"level":"info","message":"Socket.IO: Client connected - zwJJy7NqmPNBjjkZAAAB","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:27"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"cookie":{"expires":"2025-06-14T13:00:26.054Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"cookie":{"expires":"2025-06-14T13:00:28.632Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/node_modules/express-rate-limit/dist/index.mjs:692:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-13 10:00:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"cookie":{"expires":"2025-06-14T13:00:28.764Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:28"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:29"}
+{"cookie":{"expires":"2025-06-14T13:00:29.051Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:29","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:29"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:29"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:29"}
+{"level":"info","message":"🔐 Verificando autenticación para: /reports","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:59"}
+{"cookie":{"expires":"2025-06-14T13:00:29.592Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:59","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:00:59"}
+{"level":"info","message":"🔐 Verificando autenticación para: /reports","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:08"}
+{"cookie":{"expires":"2025-06-14T13:00:59.998Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:08","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:08"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:09"}
+{"cookie":{"expires":"2025-06-14T13:01:08.441Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:09","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:09"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 20","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:09"}
+{"level":"info","message":"✅ Encontradas 0 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-13 10:01:09"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"cookie":{"expires":"2025-06-14T13:01:09.392Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"cookie":{"expires":"2025-06-14T13:02:35.564Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"level":"error","message":"Ruta no encontrada - /api/admin/stats","service":"ojoahi-backend","stack":"Error: Ruta no encontrada - /api/admin/stats\n    at notFound (file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/middleware/errorHandler.js:48:17)\n    at Layer.handle [as handle_request] (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:646:15\n    at next (C:\\Users\\juanm\\OneDrive\\Desktop\\ojoahi-quasar\\ojoahi-quasar\\backend\\node_modules\\express\\lib\\router\\index.js:265:14)\n    at file:///C:/Users/juanm/OneDrive/Desktop/ojoahi-quasar/ojoahi-quasar/backend/node_modules/express-rate-limit/dist/index.mjs:692:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)","timestamp":"2025-06-13 10:02:35"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"cookie":{"expires":"2025-06-14T13:02:35.678Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35","user":{"email":"admin@example.com","id":20,"is_admin":1,"role":"admin","username":"admin"}}
+{"level":"info","message":"✅ Usuario autenticado: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:35"}
+{"level":"info","message":"👋 Logout for: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:47"}
+{"level":"info","message":"✅ Session closed for: admin","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:47"}
+{"level":"info","message":"Socket.IO: Client disconnected - zwJJy7NqmPNBjjkZAAAB","service":"ojoahi-backend","timestamp":"2025-06-13 10:02:47"}
+{"level":"info","message":"🔐 Login attempt for: juan@example.com","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:16"}
+{"level":"info","message":"🔍 Buscando usuario por email: juan@example.com","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:16"}
+{"level":"info","message":"👤 Usuario encontrado: juan_ciego (ID: 18)","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:16"}
+{"level":"info","message":"🔑 Hash almacenado: $2b$12$ydrdbxQgZSpWktiLwf7Y7eR4EecnPktyB3uFmqgRLZNNWQbqF3b8C","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:16"}
+{"level":"info","message":"✅ Login successful for: juan_ciego","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"level":"info","message":"Socket.IO: Client connected - OBCSJLnXErfEm0Z7AAAD","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"level":"info","message":"🔐 Verificando autenticación para: /stats","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"cookie":{"expires":"2025-06-14T13:03:16.538Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17","user":{"email":"juan@example.com","id":18,"is_admin":false,"role":"blind","username":"juan_ciego"}}
+{"level":"info","message":"✅ Usuario autenticado: juan_ciego","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"level":"info","message":"🔐 Verificando autenticación para: /recent-activity","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"cookie":{"expires":"2025-06-14T13:03:17.485Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17","user":{"email":"juan@example.com","id":18,"is_admin":false,"role":"blind","username":"juan_ciego"}}
+{"level":"info","message":"✅ Usuario autenticado: juan_ciego","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:17"}
+{"level":"info","message":"🔐 Verificando autenticación para: /","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:18"}
+{"cookie":{"expires":"2025-06-14T13:03:17.588Z","httpOnly":true,"originalMaxAge":86400000,"path":"/","sameSite":"lax","secure":false},"level":"info","message":"📝 Sesión actual:","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:18","user":{"email":"juan@example.com","id":18,"is_admin":false,"role":"blind","username":"juan_ciego"}}
+{"level":"info","message":"✅ Usuario autenticado: juan_ciego","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:18"}
+{"level":"info","message":"🔍 Obteniendo conversaciones para usuario 18","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:18"}
+{"level":"info","message":"✅ Encontradas 1 conversaciones","service":"ojoahi-backend","timestamp":"2025-06-13 10:03:18"}

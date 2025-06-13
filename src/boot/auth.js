@@ -9,9 +9,10 @@ export default boot(async ({ router }) => {
     const requiresGuest = to.matched.some((record) => record.meta.requiresGuest)
     const requiresBlind = to.matched.some((record) => record.meta.requiresBlind)
     const requiresVolunteer = to.matched.some((record) => record.meta.requiresVolunteer)
+    const requiresAdmin = to.matched.some((record) => record.meta.requiresAdmin)
 
     // Solo verificar autenticación si la ruta lo requiere Y no hemos inicializado
-    if ((requiresAuth || requiresGuest || requiresBlind || requiresVolunteer) && !authStore.initialized) {
+    if ((requiresAuth || requiresGuest || requiresBlind || requiresVolunteer || requiresAdmin) && !authStore.initialized) {
       try {
         await authStore.checkAuth()
       } catch (error) {
@@ -39,6 +40,12 @@ export default boot(async ({ router }) => {
 
     // Check if route requires volunteer role
     if (requiresVolunteer && (!authStore.isAuthenticated || authStore.user.role !== "volunteer")) {
+      next({ name: "dashboard" })
+      return
+    }
+
+    // Check if route requires admin role
+    if (requiresAdmin && (!authStore.isAuthenticated || !authStore.isAdmin)) {
       next({ name: "dashboard" })
       return
     }
